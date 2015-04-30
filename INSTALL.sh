@@ -1,13 +1,13 @@
 #!/bin/bash
 
-function character_loop {
+character_loop() {
  for i in $(seq 1 $(echo $1 | wc -c))
   do
    printf "=";
  done;
 }
 
-function print_banner {
+print_banner() {
  printf "\n";
  character_loop "$1";
  printf "\n";
