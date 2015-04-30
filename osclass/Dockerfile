@@ -1,6 +1,6 @@
 FROM ubuntu:trusty
 
-MANTAINER XaviOutside https://github.com/xavioutside
+MANTAINER XaviOutside https://github.com/XaviOutside/MIGRATION_OSCLASS_2_DOCKER
 
 # Install packages
 RUN apt-get update && \
