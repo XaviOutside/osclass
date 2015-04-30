@@ -24,3 +24,8 @@ sleep 1;
 print_banner "DOWNLOADING MYSQL SETUP FILES FROM DOCKER LIBRARY (https://registry.hub.docker.com/u/library/mysql/)...[starting]"
 git clone https://github.com/docker-library/mysql.git
 print_banner "DOWNLOADING MYSQL SETUP FILES FROM DOCKER LIBRARY...[completed]"
+
+print_banner "CREATING MYSQL CONTAINER...[starting]"
+cd ${TOPDIR}/mysql/5.6 && docker build --force-rm --rm -t mysql5.6 .
+print_banner "CREATING MYSQL CONTAINER...[completed]"
+
