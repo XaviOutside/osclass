@@ -28,4 +28,8 @@ print_banner "DOWNLOADING MYSQL SETUP FILES FROM DOCKER LIBRARY...[completed]"
 print_banner "CREATING MYSQL CONTAINER...[starting]"
 cd ${TOPDIR}/mysql/5.6 && docker build --force-rm --rm -t mysql5.6 .
 print_banner "CREATING MYSQL CONTAINER...[completed]"
+sleep 1;
+print_banner "CREATING OSCLASS CONTAINER...[starting]"
+cd ${TOPDIR}/osclass && docker build --force-rm --rm -t osclass .
+print_banner "CREATING OSCLASS CONTAINER...[completed]"
 
