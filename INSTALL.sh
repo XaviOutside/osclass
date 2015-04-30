@@ -34,11 +34,11 @@ cd ${TOPDIR}/osclass && docker build --force-rm --rm -t osclass .
 print_banner "CREATING OSCLASS CONTAINER...[completed]"
 sleep 1;
 
-echo "RUNNING MYSQL CONTAINTER...[starting]"
-docker run -d -p 3306:3306 --name mysql mysql5.6
-echo "RUNNING MYSQL CONTAINTER...[completed]"
+print_banner "RUNNING MYSQL CONTAINTER...[starting]"
+docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456789 --name mysql mysql5.6
+print_banner "RUNNING MYSQL CONTAINTER...[completed]"
 sleep 1;
 
-echo "RUNNING OSCLASS CONTAINTER...[starting]"
+print_banner "RUNNING OSCLASS CONTAINTER...[starting]"
 docker run -it -p 80:80 --name osclass --link mysql:mysql osclass
-echo "RUNNING OSCLASS CONTAINTER...[completed]"
+print_banner "RUNNING OSCLASS CONTAINTER...[completed]"
