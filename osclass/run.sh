@@ -6,4 +6,5 @@ sed -ri -e "s/^upload_max_filesize.*/upload_max_filesize = ${PHP_UPLOAD_MAX_FILE
 # I don't know why but it seems that they don't get the permission
 mv /var/www/html /var/www/html.old && mv /var/www/html.old /var/www/html
 
-service apache2 start
+source /etc/apache2/envvars
+exec apache2 -D FOREGROUND
