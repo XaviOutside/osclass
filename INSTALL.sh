@@ -40,5 +40,5 @@ print_banner "RUNNING MYSQL CONTAINTER...[completed]"
 sleep 1;
 
 print_banner "RUNNING OSCLASS CONTAINTER...[starting]"
-docker run -it -p 80:80 --name osclass --link mysql:mysql osclass
+docker run -d -p 80:80 --name osclass --link mysql:mysql osclass
 print_banner "RUNNING OSCLASS CONTAINTER...[completed]"
