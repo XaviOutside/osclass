@@ -1,34 +1,25 @@
 # MIGRATION_OSCLASS_2_DOCKER
 How to migrate current Osclass installation to docker infrastructure.
+The infrastructure consist of two Docker containers. One Mysql database container and another about Apache2/PHP Application.
+
+Prerequisites:
+
+1. Install docker (refer to docker documentation for different distros)
+2. Create a Osclass backup.
+3. Create a database backup.
 
 Steps:
 
-1. Install docker (refer to docker documentation for different distros)
+1. Download scripts:
 
-2. Download docker image:
+     # git clone https://github.com/XaviOutside/MIGRATION_OSCLASS_2_DOCKER.git
 
-     # docker pull morfeo8marc/osclass-docker
+2. Replace Osclass backup (backup_osclass.tar.gz) in osclass directory.
 
-3. Create directory to store the files of docker:
+3. Replace Database backup (backup.mysql.sql) in osclass directory.
 
-     # mkdir osclass-docker
+4. Execute installation script:
 
-4. Download git docker files:
+     # sh INSTALL.sh
 
-     # git clone https://github.com/morfeo8marc/osclass-docker
-
-5. Modify Dockerfile:
-
-     # docker build --force-rm=true --rm=true -t morfeo8marc/osclass-docker .
-
-6. Export MySQL database:
-
-     # mysqldump -u username -p'password’ dbname > export_database
-
-7. Backup files OSCLASS:
-
-     # cd /home/osclass/public_html/ && tar -cvf osclass_backup.tar .
-
-8. Execute docker:
-
-     # docker run -p 80:80 -it --rm=true --name NAME morfeo8marc/osclass-docker
+5. Open web browser in the url: http://your_ip_docker_machine
