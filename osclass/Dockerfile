@@ -13,6 +13,7 @@ RUN a2enmod rewrite
 # We gonna add the osclass files to the container
 RUN rm -rf /var/www/html && mkdir -p /var/www/html
 COPY backup_osclass.tar.gz /var/www/html/backup_osclass.tar.gz
+COPY backup.mysql.sql /backup.mysql.sql
 RUN cd /var/www/html && tar -xvf backup_osclass.tar.gz && rm -f /var/www/html/backup_osclass.tar.gz
 
 #Enviornment variables to configure php
