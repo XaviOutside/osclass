@@ -9,6 +9,7 @@ RUN apt-get update && \
 # config to enable .htaccess
 ADD apache_default /etc/apache2/sites-available/000-default.conf
 RUN a2enmod rewrite
+RUN a2enmod ssl
 
 # We gonna add the osclass files to the container
 RUN rm -rf /var/www/html && mkdir -p /var/www/html
