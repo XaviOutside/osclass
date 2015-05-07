@@ -1,6 +1,6 @@
 # MIGRATION_OSCLASS_2_DOCKER
 How to migrate current Osclass installation to docker infrastructure.
-The infrastructure consist of two Docker containers. One Mysql database container and another about Apache2/PHP Application.
+The infrastructure consist of three Docker containers. One Mysql database container, one Postfix server in order to receive emails on a domain and the last one runs Apache2/PHP Application.
 
 Prerequisites:
 
@@ -18,8 +18,10 @@ Steps:
 
 3. Replace Database backup (backup.mysql.sql) in osclass directory.
 
-4. Execute installation script:
+4. Modify variables from INSTALL.sh in order to customize your domain and password.
+
+5. Execute installation script:
 
      # sh INSTALL.sh
 
-5. Open web browser in the url: http://your_ip_docker_machine
+6. Open web browser in the url: http://your_ip_docker_machine
