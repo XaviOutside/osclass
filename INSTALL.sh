@@ -45,10 +45,10 @@ print_banner "RUNNING MYSQL CONTAINTER...[completed]"
 sleep 1;
 
 print_banner "RUNNING OSCLASS CONTAINTER...[starting]"
-docker run -d -p 80:80 -e DOMAIN=www.example.org --name osclass --link mysql:mysql osclass
+docker run -d -p 80:80 -e DOMAIN=example.org --name osclass --link mysql:mysql osclass
 print_banner "RUNNING OSCLASS CONTAINTER...[completed]"
 sleep 1;
 
 print_banner "RUNNING POSTFIX CONTAINTER...[starting]"
-docker run -d -p 25:25 -e DOMAIN=www.example.org --name postfix postfix
+docker run -d -p 25:25 -e DOMAIN=example.org --name postfix postfix
 print_banner "RUNNING POSTFIX CONTAINTER...[completed]"
