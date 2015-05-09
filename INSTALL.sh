@@ -25,17 +25,17 @@ git clone https://github.com/docker-library/mysql.git
 print_banner "DOWNLOADING MYSQL SETUP FILES FROM DOCKER LIBRARY...[completed]"
 
 print_banner "CREATING MYSQL CONTAINER...[starting]"
-cd ${TOPDIR}/mysql/5.6 && docker build --force-rm --rm -t mysql5.6 .
+cd ${TOPDIR}/mysql/5.6 && docker build -t mysql5.6 .
 print_banner "CREATING MYSQL CONTAINER...[completed]"
 sleep 1;
 
 print_banner "CREATING OSCLASS CONTAINER...[starting]"
-cd ${TOPDIR}/osclass && docker build --force-rm --rm -t osclass .
+cd ${TOPDIR}/osclass && docker build -t osclass .
 print_banner "CREATING OSCLASS CONTAINER...[completed]"
 sleep 1;
 
 print_banner "CREATING POSTFIX CONTAINER...[starting]"
-cd ${TOPDIR}/postfix && docker build --force-rm --rm -t postfix .
+cd ${TOPDIR}/postfix && docker build -t postfix .
 print_banner "CREATING POSTFIX CONTAINER...[completed]"
 sleep 1;
 

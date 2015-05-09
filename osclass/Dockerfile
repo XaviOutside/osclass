@@ -21,6 +21,8 @@ RUN cd /var/www/html && tar -xvf backup_osclass.tar.gz && rm -f /var/www/html/ba
 ENV PHP_UPLOAD_MAX_FILESIZE 10M
 ENV PHP_POST_MAX_SIZE 10M
 
+VOLUME /var/www/html
+
 ADD run.sh /run.sh
 ADD osclass_init.sh /osclass_init.sh
 
