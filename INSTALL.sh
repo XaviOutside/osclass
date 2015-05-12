@@ -20,11 +20,6 @@ TOPDIR=$(pwd)
 print_banner "CREATING WORK DIRECTORY...[completed]";
 sleep 1;
 
-print_banner "CREATING MYSQL CONTAINER...[starting]"
-docker build -t mysql5.6 mysql:5.6 
-print_banner "CREATING MYSQL CONTAINER...[completed]"
-sleep 1;
-
 print_banner "CREATING OSCLASS CONTAINER...[starting]"
 cd ${TOPDIR}/osclass && docker build -t osclass .
 print_banner "CREATING OSCLASS CONTAINER...[completed]"
@@ -46,7 +41,7 @@ print_banner "CREATING OSCLASS VOLUME CONTAINER...[completed]"
 sleep 1;
 
 print_banner "RUNNING MYSQL CONTAINTER...[starting]"
-docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456789 --volumes-from mysql_volume --name mysql mysql5.6
+docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456789 --volumes-from mysql_volume --name mysql mysql:5.6
 print_banner "RUNNING MYSQL CONTAINTER...[completed]"
 sleep 1;
 
