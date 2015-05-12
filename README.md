@@ -60,4 +60,4 @@ Backups:
 
 2. Backup from Mysql container:
 
-     # docker run --volumes-from mysql_volume -v $(pwd):/backup mysql mysqldump
+     # docker run --volumes-from mysql_volume -v $(pwd):/backup mysql mysqldump mysqldump -h mysql -u $(grep "DB_USER" /var/www/html/config.php | awk -F"'" '{print $4}') -p$(grep "DB_PASSWORD" /var/www/html/config.php | awk -F"'" '{print $4}') $(grep "DB_NAME" /var/www/html/config.php | awk -F"'" '{print $4}') > /backup/backup.mysql.sql

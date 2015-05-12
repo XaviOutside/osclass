@@ -20,6 +20,7 @@ VOLUME /var/www/html
 
 ADD run.sh /run.sh
 ADD osclass_init.sh /osclass_init.sh
+ADD osclass_backup.sh /osclass_backup.sh
 
 EXPOSE 80 
 CMD ["/run.sh"]
