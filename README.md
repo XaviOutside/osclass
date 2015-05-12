@@ -54,10 +54,6 @@ Import data:
 
 Backups:
 
-1. Backup from Osclass container:
+1. Backup from Osclass files and Database's dump:
 
-     # docker run --volumes-from osclass_html_volume -v $(pwd):/backup osclass tar zcvf /backup/backup.tar.gz /var/www/html
-
-2. Backup from Mysql container:
-
-     # docker run --volumes-from mysql_volume -v $(pwd):/backup mysql mysqldump mysqldump -h mysql -u $(grep "DB_USER" /var/www/html/config.php | awk -F"'" '{print $4}') -p$(grep "DB_PASSWORD" /var/www/html/config.php | awk -F"'" '{print $4}') $(grep "DB_NAME" /var/www/html/config.php | awk -F"'" '{print $4}') > /backup/backup.mysql.sql
+     # docker exec -it osclass bash /osclass_backup.sh
