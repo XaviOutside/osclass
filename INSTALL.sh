@@ -20,12 +20,8 @@ TOPDIR=$(pwd)
 print_banner "CREATING WORK DIRECTORY...[completed]";
 sleep 1;
 
-print_banner "DOWNLOADING MYSQL SETUP FILES FROM DOCKER LIBRARY (https://registry.hub.docker.com/u/library/mysql/)...[starting]"
-git clone https://github.com/docker-library/mysql.git
-print_banner "DOWNLOADING MYSQL SETUP FILES FROM DOCKER LIBRARY...[completed]"
-
 print_banner "CREATING MYSQL CONTAINER...[starting]"
-cd ${TOPDIR}/mysql/5.6 && docker build -t mysql5.6 .
+docker build -t mysql5.6 mysql:5.6 
 print_banner "CREATING MYSQL CONTAINER...[completed]"
 sleep 1;
 
@@ -40,12 +36,12 @@ print_banner "CREATING POSTFIX CONTAINER...[completed]"
 sleep 1;
 
 print_banner "CREATING MYSQL VOLUME CONTAINER...[starting]"
-cd ${TOPDIR}/postfix && docker create -v /var/lib/mysql --name mysql_volume mysql5.6 /bin/true
+cd ${TOPDIR} && docker create -v /var/lib/mysql --name mysql_volume mysql5.6 /bin/true
 print_banner "CREATING MYSQL VOLUME CONTAINER...[completed]"
 sleep 1;
 
 print_banner "CREATING OSCLASS VOLUME CONTAINER...[starting]"
-cd ${TOPDIR}/postfix && docker create -v /var/www/html --name osclass_html_volume osclass /bin/true
+cd ${TOPDIR} && docker create -v /var/www/html --name osclass_html_volume osclass /bin/true
 print_banner "CREATING OSCLASS VOLUME CONTAINER...[completed]"
 sleep 1;
 

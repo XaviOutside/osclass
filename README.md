@@ -8,6 +8,8 @@ Prerequisites:
 2. Create a Osclass backup.
 3. Create a database backup.
 
+NOTE: Tested on 3.5.6 Osclass version.
+
 Steps:
 
 1. Download scripts:
@@ -25,3 +27,19 @@ Steps:
      # sh INSTALL.sh
 
 6. Open web browser in the url: http://your_ip_docker_machine
+
+Import data:
+
+1. Backup www info
+
+2. Backup database data
+
+Backups:
+
+1. Backup from Osclass container:
+
+     # docker run --volumes-from osclass_html_volume -v $(pwd):/backup osclass tar zcvf /backup/backup.tar.gz /var/www/html
+
+2. Backup from Mysql container:
+
+     # docker run --volumes-from mysql_volume -v $(pwd):/backup mysql mysqldump
