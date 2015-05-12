@@ -8,6 +8,8 @@ Prerequisites:
 2. Create a Osclass backup.
 3. Create a database backup.
 
+NOTE: Tested on 3.5.6 Osclass version.
+
 Steps:
 
 1. Download scripts:
@@ -25,3 +27,33 @@ Steps:
      # sh INSTALL.sh
 
 6. Open web browser in the url: http://your_ip_docker_machine
+
+Import data:
+
+1. Create new directory in your host machine.
+  
+     # mkdir migration
+
+2. Copy the www backup files into the migration directory.
+     
+     IMPORTANT: tar.gz format and filename "backup_osclass.tar.gz"
+     # cp <PATH>/backup_osclass.tar.gz migration/.
+
+3. Copy the mysql backup dump with the name  
+     
+     IMPORTANT: tar.gz format and filename "backup.mysql.sql"
+     # cp <PATH>/backup.mysql.sql migration/.
+
+4. Copy the files into running container:
+
+     # tar -cf - migration | docker exec -i osclass /bin/tar -C / -xf -
+
+5. Execute import script:
+
+     # docker exec -it osclass bash /osclass_init.sh
+
+Backups:
+
+1. Backup from Osclass files and Database's dump:
+
+     # docker exec -it osclass bash /osclass_backup.sh
