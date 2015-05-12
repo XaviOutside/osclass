@@ -1,9 +1,8 @@
 #!/bin/bash
 
 # We gonna add the osclass files to the container
-rm -rf /var/www/html && mkdir -p /var/www/html
-#backup_osclass.tar.gz /var/www/html/backup_osclass.tar.gz
-#backup.mysql.sql /backup.mysql.sql
+rm -rf /var/www/html/* 
+cp /migration/backup_osclass.tar.gz /var/www/html/backup_osclass.tar.gz
 cd /var/www/html && tar -xvf backup_osclass.tar.gz && rm -f /var/www/html/backup_osclass.tar.gz
 
 OSCLASS_DB_NAME=$(grep "DB_NAME" /var/www/html/config.php | awk -F"'" '{print $4}')
@@ -26,5 +25,5 @@ sed -i "s/define('DB_HOST', 'localhost');/define('DB_HOST', 'mysql');/" /var/www
 echo "=> Done!"
 
 echo "=> Importing data."
-mysql -u$OSCLASS_USER_NAME -p${MYSQL_ROOT_PASSWORD} -h mysql -p$OSCLASS_PASSWD $OSCLASS_DB_NAME < /backup.mysql.sql
+mysql -u$OSCLASS_USER_NAME -p${MYSQL_ROOT_PASSWORD} -h mysql -p$OSCLASS_PASSWD $OSCLASS_DB_NAME < /migration/backup.mysql.sql
 echo "=> Done!"

@@ -30,9 +30,27 @@ Steps:
 
 Import data:
 
-1. Backup www info
+1. Create new directory in your host machine.
+  
+     # mkdir migration
 
-2. Backup database data
+2. Copy the www backup files into the migration directory.
+     
+     IMPORTANT: tar.gz format and filename "backup_osclass.tar.gz"
+     # cp <PATH>/backup_osclass.tar.gz migration/.
+
+3. Copy the mysql backup dump with the name  
+     
+     IMPORTANT: tar.gz format and filename "backup.mysql.sql"
+     # cp <PATH>/backup.mysql.sql migration/.
+
+4. Copy the files into running container:
+
+     # tar -cf - migration | docker exec -i osclass /bin/tar -C / -xf -
+
+5. Execute import script:
+
+     # docker exec -it osclass bash /osclass_init.sh
 
 Backups:
 
