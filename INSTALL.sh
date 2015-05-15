@@ -15,33 +15,28 @@ print_banner() {
  printf "\n";
 }
 
-print_banner "CREATING WORK DIRECTORY...[starting]";
-TOPDIR=$(pwd)
-print_banner "CREATING WORK DIRECTORY...[completed]";
-sleep 1;
-
 print_banner "CREATING OSCLASS CONTAINER...[starting]"
-cd ${TOPDIR}/osclass && docker build -t osclass .
+docker build -t osclass osclass/.
 print_banner "CREATING OSCLASS CONTAINER...[completed]"
 sleep 1;
 
 print_banner "CREATING POSTFIX CONTAINER...[starting]"
-cd ${TOPDIR}/postfix && docker build -t postfix .
+docker build -t postfix postfix/.
 print_banner "CREATING POSTFIX CONTAINER...[completed]"
 sleep 1;
 
 print_banner "CREATING MYSQL VOLUME CONTAINER...[starting]"
-cd ${TOPDIR} && docker create -v /var/lib/mysql --name mysql_volume mysql5.6 /bin/true
+docker create -v /var/lib/mysql --name mysql_volume mysql5.6 /bin/true
 print_banner "CREATING MYSQL VOLUME CONTAINER...[completed]"
 sleep 1;
 
 print_banner "CREATING OSCLASS VOLUME CONTAINER...[starting]"
-cd ${TOPDIR} && docker create -v /var/www/html --name osclass_html_volume osclass /bin/true
+docker create -v /var/www/html --name osclass_html_volume osclass /bin/true
 print_banner "CREATING OSCLASS VOLUME CONTAINER...[completed]"
 sleep 1;
 
 print_banner "CREATING BACKUP VOLUME CONTAINER...[starting]"
-cd ${TOPDIR} && docker create -v /backup --name backup_volume osclass /bin/true
+docker create -v /backup --name backup_volume osclass /bin/true
 print_banner "CREATING BACKUP VOLUME CONTAINER...[completed]"
 sleep 1;
 

@@ -57,3 +57,5 @@ Backups:
 1. Backup from Osclass files and Database's dump:
 
      # docker exec -it osclass bash /osclass_backup.sh
+
+
