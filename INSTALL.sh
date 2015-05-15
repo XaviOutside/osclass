@@ -26,7 +26,7 @@ print_banner "CREATING POSTFIX CONTAINER...[completed]"
 sleep 1;
 
 print_banner "CREATING MYSQL VOLUME CONTAINER...[starting]"
-docker create -v /var/lib/mysql --name mysql_volume mysql5.6 /bin/true
+docker create -v /var/lib/mysql --name mysql_volume mysql:5.6 /bin/true
 print_banner "CREATING MYSQL VOLUME CONTAINER...[completed]"
 sleep 1;
 
