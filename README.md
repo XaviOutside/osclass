@@ -4,12 +4,12 @@ This readme file will guide you through the process of migrating an Osclass inst
 
 The infrastructure consists of six Docker containers: Three server containers and three volume containers.
 
-     1. Mysql database
-     2. Postfix server
-     3. Webserver server (Apache2/PHP)
-     4. Osclass volume
-     5. Database volume
-     6. Backup volume
+  1. Mysql database
+  2. Postfix server
+  3. Webserver server (Apache2/PHP)
+  4. Osclass volume
+  5. Database volume
+  6. Backup volume
 
 PREREQUISITES:
 
