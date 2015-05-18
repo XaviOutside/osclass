@@ -1,32 +1,45 @@
 # MIGRATION_OSCLASS_2_DOCKER
-How to migrate current Osclass installation to docker infrastructure.
-The infrastructure consist of three Docker containers and three Docker volume containers. One Mysql database container, one Postfix server in order to receive emails on a domain and the last one runs Apache2/PHP Application. And the volumes, one for osclass files, one for database and one for backups.
+
+This readme file will guide you through the process of migrating an Osclass installation to a Docker infrastructure.
+
+The infrastructure consists of six Docker containers: Three server containers and three volume containers.
+		1. Mysql database
+		2. Postfix server
+		3. Webserver server (Apache2/PHP)
+		4. Osclass volume
+		5. Database volume
+		6. Backup volume
 
 PREREQUISITES:
 
-1. Install docker, docker-machine and docker-compose (refer to docker documentation for different distros)
-2. Create a Osclass backup.
-3. Create a database backup.
+1. Install VirtualBox
+2. Install docker, docker-machine and docker-compose (refer to docker documentation for different distros)
 
-NOTE: Tested on 3.5 Osclass version.
+NOTE: Tested on Osclass 3.5.
 
 STEPS:
 
-1. Create machine with docker-machine
+1. Create virtualbox machine.
 
      # docker-machine create --driver virtualbox dockerenv 
      # docker-machine active dockerenv
      # $(docker-machine env dockerenv)
 
-2. Download scripts and go in to the directory:
+2. Download scripts and cd to folder.
 
      # git clone https://github.com/XaviOutside/MIGRATION_OSCLASS_2_DOCKER.git
 
-3. Replace Osclass backup (backup_osclass.tar.gz) in osclass directory.
+3. Replace files from migrate folder with the prerequisites migrate files.
 
-4. Replace Database backup (backup.mysql.sql) in osclass directory.
+	a. backup_osclass.tar.gz for osclass files.
+	b. backup.mysql.sql for database dump file.
 
 5. Modify variables in common.env file in order to customize your domain and password.
+
+     # cat common.env 
+	# Set of variables;
+	DOMAIN=yourdomain.org
+	MYSQL_ROOT_PASSWORD=yourpassword
 
 6. Build containers:
 
@@ -36,34 +49,30 @@ STEPS:
 
      # docker-compose up
 
-8. Open web browser in the url: http://your_ip_docker_machine
+8. Launch the following url in your favorite browse.
 
-     NOTE: You can know your ip with this command:
+     NOTE: You can get your ip with the following command:
      # docker-machine ip
+     
+     http://your_ip_docker_machine
 
 IMPORT DATA:
 
-1. Copy the www backup files into the migration directory.
+1. Create a tar.gz of your current osclass server and replace the backup_osclass.tar.gz that you can find in the folder "migration".
      
-     NOTE: tar.gz format and filename "backup_osclass.tar.gz"
-     # cp <PATH>/backup_osclass.tar.gz migration/.
-
-2. Copy the mysql backup dump with the name  
+2. Create a dump file of your osclass database and replace the backup.mysql.sql that you can find in the folder "migration".
      
-     NOTE: tar.gz format and filename "backup.mysql.sql"
-     # cp <PATH>/backup.mysql.sql migration/.
-
-3. Copy the files into running container:
+3. We need to copy the migration folder into the osclass container.
 
      # tar -cf - migration | docker exec -i <NAME_OSCLASS_CONTAINER>  /bin/tar -C / -xf -
 
-4. Execute import script:
+4. Now were are ready to run the osclass_init.sh script in order to import the files and database data into our volume containers.
 
      # docker exec -it <NAME_OSCLASS_CONTAINER> bash /osclass_init.sh
 
 BACKUPS:
 
-1. Backup from Osclass files and Database's dump:
+1. Generate a backup of our osclass files and database.
 
      # docker exec -it <NAME_OSCLASS_CONTAINER> bash /osclass_backup.sh
 
