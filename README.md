@@ -1,6 +1,6 @@
 # MIGRATION_OSCLASS_2_DOCKER
 How to migrate current Osclass installation to docker infrastructure.
-The infrastructure consist of three Docker containers and three Docker volume containers. One Mysql database container, one Postfix server in order to receive emails on a domain and the last one runs Apache2/PHP Application. And the volumes, one for osclass files, ones for database and one for backups.
+The infrastructure consist of three Docker containers and three Docker volume containers. One Mysql database container, one Postfix server in order to receive emails on a domain and the last one runs Apache2/PHP Application. And the volumes, one for osclass files, one for database and one for backups.
 
 PREREQUISITES:
 
@@ -69,4 +69,4 @@ BACKUPS:
 
 OTHERS:
 
-There is a INSTALL.sh file if you want to launch without docker-compose.
+There is an INSTALL.sh file if you want to launch without docker-compose.
