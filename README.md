@@ -3,12 +3,12 @@
 This readme file will guide you through the process of migrating an Osclass installation to a Docker infrastructure.
 
 The infrastructure consists of six Docker containers: Three server containers and three volume containers.
-		1. Mysql database
-		2. Postfix server
-		3. Webserver server (Apache2/PHP)
-		4. Osclass volume
-		5. Database volume
-		6. Backup volume
+     1. Mysql database
+     2. Postfix server
+     3. Webserver server (Apache2/PHP)
+     4. Osclass volume
+     5. Database volume
+     6. Backup volume
 
 PREREQUISITES:
 
@@ -31,15 +31,15 @@ STEPS:
 
 3. Replace files from migrate folder with the prerequisites migrate files.
 
-	a. backup_osclass.tar.gz for osclass files.
-	b. backup.mysql.sql for database dump file.
+     a. backup_osclass.tar.gz for osclass files.
+     b. backup.mysql.sql for database dump file.
 
 5. Modify variables in common.env file in order to customize your domain and password.
 
      # cat common.env 
-	# Set of variables;
-	DOMAIN=yourdomain.org
-	MYSQL_ROOT_PASSWORD=yourpassword
+       # Set of variables;
+       DOMAIN=yourdomain.org
+       MYSQL_ROOT_PASSWORD=yourpassword
 
 6. Build containers:
 
