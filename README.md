@@ -3,6 +3,7 @@
 This readme file will guide you through the process of migrating an Osclass installation to a Docker infrastructure.
 
 The infrastructure consists of six Docker containers: Three server containers and three volume containers.
+
      1. Mysql database
      2. Postfix server
      3. Webserver server (Apache2/PHP)
