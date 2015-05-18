@@ -1,0 +1,45 @@
+osclass:
+  build: ./osclass
+  ports:
+    - "80:80"
+  env_file:
+    - ./common.env
+  volumes_from:
+    - backupvolume
+    - osclasshtmlvolume 
+  links:
+    - mysql:mysql
+
+postfix:
+  build: ./postfix
+  ports:
+    - "25:25"
+  env_file:
+    - ./common.env
+
+mysql:
+  image: mysql:5.6
+  expose:
+    - "3306:3306"
+  env_file:
+    - ./common.env
+  volumes_from:
+    - mysqlvolume
+
+osclasshtmlvolume:
+  build: ./osclass
+  volumes:
+    - /var/www/html
+  command: /bin/true
+
+backupvolume:
+  build: ./osclass
+  volumes: 
+    - /backup
+  command: /bin/true
+
+mysqlvolume:
+  image: mysql
+  volumes: 
+    - /var/lib/mysql
+  command: /bin/true
