@@ -23,7 +23,9 @@ STEPS:
 1. Create virtualbox machine.
 
      # docker-machine create --driver virtualbox dockerenv 
+
      # docker-machine active dockerenv
+
      # $(docker-machine env dockerenv)
 
 2. Download scripts and cd to folder.
@@ -33,13 +35,17 @@ STEPS:
 3. Replace files from migrate folder with the prerequisites migrate files.
 
      a. backup_osclass.tar.gz for osclass files.
+
      b. backup.mysql.sql for database dump file.
 
 5. Modify variables in common.env file in order to customize your domain and password.
 
      # cat common.env 
+
        # Set of variables;
+
        DOMAIN=yourdomain.org
+
        MYSQL_ROOT_PASSWORD=yourpassword
 
 6. Build containers:
@@ -53,6 +59,7 @@ STEPS:
 8. Launch the following url in your favorite browse.
 
      NOTE: You can get your ip with the following command:
+
      # docker-machine ip
      
      http://your_ip_docker_machine
