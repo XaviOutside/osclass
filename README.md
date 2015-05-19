@@ -23,11 +23,11 @@ STEPS:
 
 1. Create the virtualbox machine.
 
-	$ docker-machine create --driver virtualbox dockerenv 
+        $ docker-machine create --driver virtualbox dockerenv 
 
         $ docker-machine active dockerenv
 
-     $ $(docker-machine env dockerenv)
+        $ $(docker-machine env dockerenv)
 
 2. Download scripts and cd to folder.
 
