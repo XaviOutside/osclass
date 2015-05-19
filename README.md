@@ -4,19 +4,20 @@ This readme file will guide you through the process of migrating an Osclass inst
 
 The infrastructure consists of six Docker containers: Three server containers and three volume containers.
 
-  · Mysql database
-  · Postfix server
-  · Apache2 Webserver
-  · Osclass volume
-  · Database volume
-  · Backup volume
+  * Mysql database
+  * Postfix server
+  * Apache2 Webserver
+  * Osclass volume
+  * Database volume
+  * Backup volume
 
 PREREQUISITES:
 
 1. Install VirtualBox
 2. Install Docker, Docker-machine and Docker-compose (refer to Docker documentation for different distros)
 
-NOTE: Tested on Osclass 3.5.
+**Note:**
+Tested on Osclass 3.5.
 
 STEPS:
 
@@ -48,17 +49,18 @@ STEPS:
 
        MYSQL_ROOT_PASSWORD=yourpassword
 
-6. Build containers:
+6. Build containers.
 
      # docker-compose build
 
-7. Run containers:
+7. Run containers.
 
      # docker-compose up
 
 8. Launch the following url in your favorite browse.
 
-     NOTE: You can get your ip with the following command:
+     **Note:**
+     You can get your ip with the following command:
 
      # docker-machine ip
      
