@@ -4,12 +4,12 @@ This readme file will guide you through the process of migrating an Osclass inst
 
 The infrastructure consists of six Docker containers: Three server containers and three volume containers.
 
-  * Mysql database
-  * Postfix server
-  * Apache2 Webserver
-  * Osclass volume
-  * Database volume
-  * Backup volume
+  1. Mysql database
+  2. Postfix server
+  3. Apache2 Webserver
+  4. Osclass volume
+  5. Database volume
+  6. Backup volume
 
 PREREQUISITES:
 
@@ -23,15 +23,15 @@ STEPS:
 
 1. Create the virtualbox machine.
 
-     # docker-machine create --driver virtualbox dockerenv 
+     $ docker-machine create --driver virtualbox dockerenv 
 
-     # docker-machine active dockerenv
+     $ docker-machine active dockerenv
 
-     # $(docker-machine env dockerenv)
+     $ $(docker-machine env dockerenv)
 
 2. Download scripts and cd to folder.
 
-     # git clone https://github.com/XaviOutside/MIGRATION_OSCLASS_2_DOCKER.git
+     $ git clone https://github.com/XaviOutside/MIGRATION_OSCLASS_2_DOCKER.git
 
 3. Replace files from migrate folder with the prerequisites migrate files.
 
@@ -41,7 +41,7 @@ STEPS:
 
 5. Modify variables in common.env file in order to customize your domain and password.
 
-     # vi common.env 
+     $ vi common.env 
 
        # Set of variables;
 
@@ -51,18 +51,18 @@ STEPS:
 
 6. Build containers.
 
-     # docker-compose build
+     $ docker-compose build
 
 7. Run containers.
 
-     # docker-compose up
+     $ docker-compose up
 
 8. Launch the following url in your favorite browse.
 
      **Note:**
      You can get your ip with the following command:
 
-     # docker-machine ip
+     $ docker-machine ip
      
      http://your_ip_docker_machine
 
@@ -74,17 +74,17 @@ IMPORT DATA:
      
 3. We are going to copy the migration folder into the osclass container.
 
-     # tar -cf - migration | docker exec -i <NAME_OSCLASS_CONTAINER>  /bin/tar -C / -xf -
+     $ tar -cf - migration | docker exec -i <NAME_OSCLASS_CONTAINER>  /bin/tar -C / -xf -
 
 4. Now we are ready to run the osclass_init.sh script in order to import the files and database data into our volume containers.
 
-     # docker exec -it <NAME_OSCLASS_CONTAINER> bash /osclass_init.sh
+     $ docker exec -it <NAME_OSCLASS_CONTAINER> bash /osclass_init.sh
 
 BACKUPS:
 
 1. Generate a backup of our osclass files and database.
 
-     # docker exec -it <NAME_OSCLASS_CONTAINER> bash /osclass_backup.sh
+     $ docker exec -it <NAME_OSCLASS_CONTAINER> bash /osclass_backup.sh
 
 OTHERS:
 
