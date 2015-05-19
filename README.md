@@ -25,7 +25,7 @@ STEPS:
 
        $ docker-machine create --driver virtualbox dockerenv 
 
-     $ docker-machine active dockerenv
+       $ docker-machine active dockerenv
 
      $ $(docker-machine env dockerenv)
 
