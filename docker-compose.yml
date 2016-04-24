@@ -1,9 +1,9 @@
 osclass:
   build: ./osclass
-  ports:
-    - "80:80"
   env_file:
     - ./common.env
+  ports:
+    - "80:80"
   volumes_from:
     - backupvolume
     - osclasshtmlvolume 
@@ -12,17 +12,17 @@ osclass:
 
 postfix:
   build: ./postfix
-  ports:
-    - "25:25"
   env_file:
     - ./common.env
+  ports:
+    - "25:25"
 
 mysql:
   image: mysql:5.6
-  expose:
-    - "3306:3306"
   env_file:
     - ./common.env
+  expose:
+    - "3306:3306"
   volumes_from:
     - mysqlvolume
 

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # We gonna add the osclass files to the container
-rm -rf /var/www/html/* && cd /var/www/html && tar -xvf /migration/backup_osclass.tar.gz
+rm -rf /var/www/html/* && cd /var/www/html && tar -zxvf /migration/backup_osclass.tar.gz
 
 OSCLASS_DB_NAME=$(grep "DB_NAME" /var/www/html/config.php | awk -F"'" '{print $4}')
 OSCLASS_USER_NAME=$(grep "DB_USER" /var/www/html/config.php | awk -F"'" '{print $4}')

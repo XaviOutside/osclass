@@ -13,8 +13,8 @@ The infrastructure consists of six Docker containers: Three server containers an
 
 PREREQUISITES:
 
-1. Install VirtualBox
-2. Install Docker, Docker-machine and Docker-compose (refer to Docker documentation for different distros)
+1. Install Docker, Docker-machine and Docker-compose (refer to Docker documentation for different distros)
+   > NOTE: If you are working with Linux, you just need docker and docker-compose.
 
 **Note:**
 Tested on Osclass 3.5.
@@ -39,25 +39,25 @@ STEPS:
 
      b. backup.mysql.sql for database dump file.
 
-5. Modify variables in common.env file in order to customize your domain and password.
+4. Modify variables in common.env file in order to customize your domain and password.
 
-        $ vi common.env 
+    ~~~bash
+    $ vi common.env 
+      # Set of variables;
+      DOMAIN=yourdomain.org
+      MYSQL_ROOT_PASSWORD=yourpassword
+    ~~~
+    > NOTE: DOMAIN will be used by postfix container and MYSQL_ROOT_PASSWORD for osclass_init.sh script by OSCLASS container.
 
-         # Set of variables;
-
-         DOMAIN=yourdomain.org
-
-         MYSQL_ROOT_PASSWORD=yourpassword
-
-6. Build containers.
+5. Build containers.
 
         $ docker-compose build
 
-7. Run containers.
+6. Run containers.
 
         $ docker-compose up
 
-8. Launch the following url in your favorite browse.
+7. Launch the following url in your favorite browse.
 
      **Note:**
      You can get your ip with the following command:
@@ -80,12 +80,11 @@ IMPORT DATA:
 
         $ docker exec -it <NAME_OSCLASS_CONTAINER> bash /osclass_init.sh
 
+>NOTE: These commands are included into Makefile: $ make import
+
 BACKUPS:
 
 1. Generate a backup of our osclass files and database.
 
         $ docker exec -it <NAME_OSCLASS_CONTAINER> bash /osclass_backup.sh
 
-OTHERS:
-
-There is an INSTALL.sh file if you want to launch without docker-compose.

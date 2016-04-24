@@ -17,7 +17,16 @@ start:
 stop:
 	$(DOCKERCOMPOSE) stop
 rm:
-	$(DOCKERCOMPOSE) rm
+	$(DOCKERCOMPOSE) rm -f
+build:
+	$(DOCKERCOMPOSE) build
+logs:
+	$(DOCKERCOMPOSE) logs
+ssh:
+	$(DOCKERCOMPOSE) run osclass bash
+import:
+	tar -cf - migration | docker exec -i migrationosclass2docker_osclass_1 /bin/tar -C / -xf -
+	docker exec -t migrationosclass2docker_osclass_1 bash /osclass_init.sh
 
 # Commands for docker-machine
 dmstart:
