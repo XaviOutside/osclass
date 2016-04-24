@@ -22,7 +22,7 @@ mysql:
   env_file:
     - ./common.env
   expose:
-    - "3306:3306"
+    - "3306"
   volumes_from:
     - mysqlvolume
 
