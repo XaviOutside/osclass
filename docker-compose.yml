@@ -23,6 +23,8 @@ mysql:
     - ./common.env
   expose:
     - "3306"
+  volumes:
+    - "./mysql/conf.d:/etc/mysql/conf.d"
   volumes_from:
     - mysqlvolume
 
