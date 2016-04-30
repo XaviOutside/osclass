@@ -12,6 +12,7 @@ chmod a+w /var/www/html/oc-content/downloads/
 chmod a+w /var/www/html/oc-content/languages/
 chmod a+w /var/www/html/
 chown -R apache.apache /var/www/html
+ln -sf /usr/lib /var/www/lib
 echo "=> Done!"
 
 mkdir -p /run/apache2
