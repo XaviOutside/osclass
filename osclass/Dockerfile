@@ -4,7 +4,9 @@ MAINTAINER XaviOutside https://github.com/XaviOutside/MIGRATION_OSCLASS_2_DOCKER
 
 # Install packages
 RUN apk update && \
-    apk add apache2 \
+    apk add \
+            apache2 \
+            apache2-ssl \
             bash \
             git \
             mysql-client \
