@@ -17,9 +17,14 @@ RUN apk update && \
             php-ctype \
             php-curl \
             php-gd \
+            php-json \
             php-mcrypt \
             php-mysql \
             php-mysqli \
+            php-opcache \
+            php-openssl \
+            php-pdo \
+            php-pdo_mysql \
             php-phar \
             pwgen \
             supervisor && \
@@ -27,9 +32,12 @@ RUN apk update && \
     sed -i 's"#LoadModule rewrite_module modules/mod_rewrite.so"LoadModule rewrite_module modules/mod_rewrite.so"' /etc/apache2/httpd.conf && \
     sed -i 's"#LoadModule deflate_module modules/mod_deflate.so"LoadModule deflate_module modules/mod_deflate.so"' /etc/apache2/httpd.conf && \
     sed -i 's"#LoadModule setenvif_module modules/mod_setenvif.so"LoadModule setenvif_module modules/mod_setenvif.so"' /etc/apache2/httpd.conf && \
-    sed -i 's"#LoadModule headers_module modules/mod_headers.so"LoadModule headers_module modules/mod_headers.so"' /etc/apache2/httpd.conf && \
-    sed -i 's"#LoadModule ext_filter_module modules/mod_ext_filter.so"LoadModule ext_filter_module modules/mod_ext_filter.so"' /etc/apache2/httpd.conf && \
-    sed -i 's"#LoadModule expires_module modules/mod_expires.so"LoadModule expires_module modules/mod_expires.so"' /etc/apache2/httpd.conf && \
+    #sed -i 's"#LoadModule headers_module modules/mod_headers.so"LoadModule headers_module modules/mod_headers.so"' /etc/apache2/httpd.conf && \
+    #sed -i 's"#LoadModule ext_filter_module modules/mod_ext_filter.so"LoadModule ext_filter_module modules/mod_ext_filter.so"' /etc/apache2/httpd.conf && \
+    #sed -i 's"#LoadModule expires_module modules/mod_expires.so"LoadModule expires_module modules/mod_expires.so"' /etc/apache2/httpd.conf && \
+    sed -i 's"#LoadModule logio_module modules/mod_logio.so"LoadModule logio_module modules/mod_logio.so"' /etc/apache2/httpd.conf && \
+    sed -i 's"#LoadModule socache_shmcb_module modules/mod_socache_shmcb.so"LoadModule socache_shmcb_module modules/mod_socache_shmcb.so"' /etc/apache2/httpd.conf && \
+    sed -i 's"#LoadModule watchdog_module modules/mod_watchdog.so"LoadModule watchdog_module modules/mod_watchdog.so"' /etc/apache2/httpd.conf && \
     echo "Success"
 
 # Config to enable .htaccess

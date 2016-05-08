@@ -22,8 +22,10 @@ build:
 	$(DOCKERCOMPOSE) build
 logs:
 	$(DOCKERCOMPOSE) logs
-ssh:
+run:
 	$(DOCKERCOMPOSE) run osclass bash
+ssh:
+	$(DOCKER) exec -it migrationosclass2docker_osclass_1 bash
 import:
 	tar -cf - migration | docker exec -i migrationosclass2docker_osclass_1 /bin/tar -C / -xf -
 	docker exec -t migrationosclass2docker_osclass_1 bash /osclass_init.sh
