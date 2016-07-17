@@ -25,13 +25,13 @@ logs:
 run:
 	$(DOCKERCOMPOSE) run osclass bash
 ssh:
-	$(DOCKER) exec -it migrationosclass2docker_osclass_1 bash
+	$(DOCKER) exec -it osclass_osclass_1 bash
 clean:
 	$(DOCKER) rmi $(docker images -f "dangling=true" -q)
 	$(DOCKER) volume rm $(docker volume ls -qf "dangling=true")
 import:
-	tar -cf - migration | docker exec -i migrationosclass2docker_osclass_1 /bin/tar -C / -xf -
-	docker exec -t migrationosclass2docker_osclass_1 bash /osclass_init.sh
+	tar -cf - migration | docker exec -i osclass_osclass_1 /bin/tar -C / -xf -
+	docker exec -t osclass_osclass_1 bash /osclass_init.sh
 
 # Commands for docker-machine
 dmstart:
