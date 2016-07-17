@@ -11,21 +11,21 @@ RUN apk update && \
             git \
             mysql-client \
             openrc \
-            php-apache2 \
-            php-apcu \
-            php-cli \ 
-            php-ctype \
-            php-curl \
-            php-gd \
-            php-json \
-            php-mcrypt \
-            php-mysql \
-            php-mysqli \
-            php-opcache \
-            php-openssl \
-            php-pdo \
-            php-pdo_mysql \
-            php-phar \
+            php5-apache2 \
+            php5-apcu \
+            php5-cli \ 
+            php5-ctype \
+            php5-curl \
+            php5-gd \
+            php5-json \
+            php5-mcrypt \
+            php5-mysql \
+            php5-mysqli \
+            php5-opcache \
+            php5-openssl \
+            php5-pdo \
+            php5-pdo_mysql \
+            php5-phar \
             pwgen \
             supervisor && \
     rm -f /var/cache/apk/* && \
