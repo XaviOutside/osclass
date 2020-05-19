@@ -1,47 +1,36 @@
-osclass:
+version: "3"
+
+services:
+ osclass:
   build: ./osclass
   env_file:
     - ./common.env
   ports:
     - "80:80"
-  volumes_from:
-    - backupvolume
-    - osclasshtmlvolume 
-  links:
-    - mysql:mysql
+  volumes:
+    - /opt/osclass/html:/var/www/html
+    - /backup:/backup
+  networks:
+    - osclassnetwork
 
-postfix:
+ postfix:
   build: ./postfix
   env_file:
     - ./common.env
   ports:
     - "25:25"
 
-mysql:
+ mysql:
   image: mysql:5.6
   env_file:
     - ./common.env
   expose:
     - "3306"
+  networks:
+    - osclassnetwork
   volumes:
     - "./mysql/conf.d:/etc/mysql/conf.d"
-  volumes_from:
-    - mysqlvolume
+    - /opt/osclass/data:/var/lib/mysql
 
-osclasshtmlvolume:
-  build: ./osclass
-  volumes:
-    - /var/www/html
-  command: /bin/true
-
-backupvolume:
-  build: ./osclass
-  volumes: 
-    - /backup
-  command: /bin/true
-
-mysqlvolume:
-  image: mysql
-  volumes: 
-    - /var/lib/mysql
-  command: /bin/true
+networks:
+  osclassnetwork:
